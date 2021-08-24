@@ -275,6 +275,7 @@ private extension RPCircularProgress {
         animation.toValue = pinnedProgress
         animation.beginTime = CACurrentMediaTime() + initialDelay
         animation.delegate = self
+        animation.isRemovedOnCompletion = true //NOTE: Bug fix for high cpu usage
         if let completion = completion {
             let completionObject = CompletionBlockObject(action: completion)
             animation.setValue(completionObject, forKey: AnimationKeys.completionBlock)
